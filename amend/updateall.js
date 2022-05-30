@@ -69,12 +69,12 @@ const updateEmployeeRolePrompt = () => {
 
 // Update Employee Manager
 const updateEmployeeManagerPrompt = () => {
-    const sql = `SELECT employees.id, emeployees.first_name, employees.last_name, employees.manager_id
+    const sql = `SELECT employees.id, employees.first_name, employees.last_name, employees.manager_id
                     FROM employees`;
 
     connection.query(sql, (err, res) => {
         if (err) throw new Error;
-        
+
         let employeesNameArray = [];
         res.forEach((employees) => {employeesNameArray.push(`${employees.first_name} ${employees.last_name}`)});
 
@@ -99,11 +99,11 @@ const updateEmployeeManagerPrompt = () => {
                     employeeId = employees.id;
                 }
                 if (answer.newManager === `${employees.first_name} ${employees.last_name}`) {
-                    managerId = employee.id;
+                    managerId = employees.id;
                 }
             });
 
-            if (validate.isSame(answer.chosenEmployee, answer.newManager)) {
+            if (answer.chosenEmployee === answer.newManager) {
                 console.log(chalk.red.bold(`====================================================================================`));
                 console.log(chalk.redBright.bold(figlet.textSync(`Invalid  Manager  Selection`)));
                 console.log(chalk.red.bold(`====================================================================================`));
