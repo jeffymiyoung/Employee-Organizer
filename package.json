@@ -5,6 +5,11 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "db": "mysql db/employees.db",
+    "create": "mysql db/employees.db < db/db.sql",
+    "tables": "mysql db/employees.db < db/schema.sql",
+    "seeds": "mysql db/employees.db < db/seeds.sql",
+    "watch": "nodemon server.js",
     "start": "node server.js"
   },
   "repository": {
@@ -18,9 +23,13 @@
   },
   "homepage": "https://github.com/jeffymiyoung/Employee-Organizer#readme",
   "dependencies": {
+    "chalk": "^4.1.2",
     "console.table": "^0.10.0",
     "dotenv": "^16.0.1",
+    "figlet": "^1.5.2",
     "inquirer": "^8.2.4",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.16",
+    "validator": "^13.7.0"
   }
 }

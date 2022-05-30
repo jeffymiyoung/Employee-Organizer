@@ -1,15 +1,15 @@
 -- Populating Table information/seeds
-INSERT INTO department(department_name)
+INSERT IGNORE INTO department(department_name)
 VALUES 
     ("Sales"),
     ("Finance"),
     ("Marketing"),
     ("Engineering"),
     ("Legal"),
-    ("Human Resources"),
+    ("Human Resources")
 ;
 
-INSERT INTO roles(title, salary, department_id)
+INSERT IGNORE INTO roles(title, salary, department_id)
 VALUES
     ("Enterprise Account Executive", 115000, 1),
     ("Mid-Market Account Executive", 95000, 1), 
@@ -25,10 +25,10 @@ VALUES
     ("Chief Counsel", 300000, 5),
     ("Human Resources Generalist", 70000, 6),
     ("Human Resources Administrator", 95000, 6), 
-    ("Director of Human Resources", 100000, 6),
+    ("Director of Human Resources", 100000, 6)
 ;
 
-INSERT INTO employees (first_name, last_name, role_id, manager_id)
+INSERT IGNORE INTO employees (first_name, last_name, role_id, manager_id)
 VALUES 
     ("Debra", "Macintosh", 1, 3),
     ("Susan", "Jones", 2, 3),
@@ -41,8 +41,8 @@ VALUES
     ("Ava", "Miller", 9, 10),
     ("Isabella", "Davis", 10, null),
     ("Mia", "Brown", 11, 12),
-    ("Judy", "Smith" 12, null),
-    ("Aurora", "Lewis" 13, 15),
+    ("Judy", "Smith", 12, null),
+    ("Aurora", "Lewis", 13, 15),
     ("Lily", "Harris", 14, 15),
-    ("Hazel", "Allen", 15, null),
+    ("Hazel", "Allen", 15, null)
 ; 
