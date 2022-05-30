@@ -8,6 +8,7 @@ const chalk = require('chalk');
 
 // Linking Equations
 const { allEmployees, allRoles, allDepartments, EmployeeDepartments, departmentBudgets} = require('./observe/viewall.js');
+const { updateEmployeeRolePrompt, updateEmployeeManagerPrompt } = require('./amend/updateall.js');
 
 // DB Connection and opening title
 connection.connect((error) => {
@@ -128,36 +129,14 @@ const viewDepartmentBudget = () => {
 
 // Update Employee Role
 const updateEmployeeRole = () => {
-    const sql = ``;
-
-    connection.query(sql, (error, res) => {
-        if (error) throw new Error;
-
-        console.log(chalk.cyan.bold(`====================================================================================`));
-        console.log(``);
-        console.log(chalk.magentaBright.bold(figlet.textSync(``)));
-        console.log(``);
-        console.table(res);
-        console.log(chalk.cyan.bold(`====================================================================================`));
-        promptUser();
-    });
+    updateEmployeeRolePrompt();
+    setTimeout(promptUser, 20000);
 };
 
 // Update Employee Manager
 const updateEmployeeManager = () => {
-    const sql = ``;
-
-    connection.query(sql, (error, res) => {
-        if (error) throw new Error;
-
-        console.log(chalk.cyan.bold(`====================================================================================`));
-        console.log(``);
-        console.log(chalk.magentaBright.bold(figlet.textSync(``)));
-        console.log(``);
-        console.table(res);
-        console.log(chalk.cyan.bold(`====================================================================================`));
-        promptUser();
-    });
+    updateEmployeeManagerPrompt();
+    setTimeout(promptUser, 20000);
 };
 
 // Add Employee
