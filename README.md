@@ -35,7 +35,7 @@ Starting Screen:
 
 Example Gif:
 
-![This is a loop gif of some prompt in the Employee Organizer Application.](./assets/Employee%20Organizer%20GIF.mp4)
+![This is a loop gif of some prompt in the Employee Organizer Application.](./assets/Employee-Organizer-GIF.gif)
 
 
 [Tutorial Video Here](https://youtu.be/831qH15nBGw)
