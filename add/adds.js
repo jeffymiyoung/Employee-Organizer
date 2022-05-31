@@ -80,19 +80,47 @@ const upEmployee = () => {
 
 // Add Role
 const upRole = () => {
-    const sql = ``;
-
+    const sql = `SELECT * FROM department`;
     connection.query(sql, (error, res) => {
         if (error) throw new Error;
+        const departments = res.map(({ id, department_name }) => ({ name: department_name, value: id}));
 
-        console.log(chalk.cyan.bold(`====================================================================================`));
-        console.log(``);
-        console.log(chalk.magentaBright.bold(figlet.textSync(``)));
-        console.log(``);
-        console.table(res);
-        console.log(chalk.cyan.bold(`====================================================================================`));
-        promptUser();
-    });
+        inquirer.prompt([
+            {
+                name: 'department',
+                type: 'list',
+                message: 'Which Department does this new role belong in?',
+                choices: departments
+            },
+            {
+                name: 'newRole',
+                type: 'input',
+                message: 'What is the name of this new role?',
+                validate: validate.validateString
+            },
+            {
+                name: 'salary',
+                type: 'input',
+                message: 'What is the salary of this new role?',
+                validate: validate.validateSalary
+            }
+        ])
+        .then((answer) => {
+            const input = [answer.newRole, answer.salary, answer.department];
+            
+            const sql = `INSERT INTO roles (title, salary, department_id)
+                            VALUES (?, ?, ?)`;
+            connection.query(sql, input, (error, res) => {
+                if (error) throw new Error;
+
+                console.log(chalk.green.bold(`====================================================================================`));
+                console.log(``);
+                console.log(chalk.greenBright.bold(figlet.textSync(answer.newRole + `  Role Created!`)));
+                console.log(``);
+                console.log(chalk.green.bold(`====================================================================================`));
+            })
+        })
+    })
 };
 
 // Add Department
