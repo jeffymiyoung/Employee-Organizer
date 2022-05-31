@@ -56,11 +56,11 @@ const updateEmployeeRolePrompt = () => {
                                 WHERE employees.id = ?`;
                 connection.query(sql, [newTitleId, employeeId], (err) => {
                     if (err) throw new Error;
-                    console.log(chalk.cyan.bold(`====================================================================================`));
+                    console.log(chalk.yellow.bold(`====================================================================================`));
                     console.log(``);
-                    console.log(chalk.magentaBright.bold(figlet.textSync(`Employee's  Role  Updated`)));
+                    console.log(chalk.yellowBright.bold(figlet.textSync(`Employee's  Role  Updated`)));
                     console.log(``);
-                    console.log(chalk.cyan.bold(`====================================================================================`));
+                    console.log(chalk.yellow.bold(`====================================================================================`));
                 });
             });
         });
@@ -72,8 +72,8 @@ const updateEmployeeManagerPrompt = () => {
     const sql = `SELECT employees.id, employees.first_name, employees.last_name, employees.manager_id
                     FROM employees`;
 
-    connection.query(sql, (err, res) => {
-        if (err) throw new Error;
+    connection.query(sql, (error, res) => {
+        if (error) throw new Error;
 
         let employeesNameArray = [];
         res.forEach((employees) => {employeesNameArray.push(`${employees.first_name} ${employees.last_name}`)});
@@ -113,11 +113,11 @@ const updateEmployeeManagerPrompt = () => {
                                 WHERE employees.id = ?`;
                 connection.query(sql, [managerId, employeeId], (err) => {
                     if (err) throw new Error;
-                    console.log(chalk.cyan.bold(`====================================================================================`));
+                    console.log(chalk.yellow.bold(`====================================================================================`));
                     console.log(``);
-                    console.log(chalk.magentaBright.bold(figlet.textSync(`Employee's  Manager  Updated`)));
+                    console.log(chalk.yellowBright.bold(figlet.textSync(`Employee's  Manager  Updated`)));
                     console.log(``);
-                    console.log(chalk.cyan.bold(`====================================================================================`));
+                    console.log(chalk.yellow.bold(`====================================================================================`));
                 });
             }
         });

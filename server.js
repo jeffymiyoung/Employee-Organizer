@@ -7,8 +7,10 @@ const figlet = require('figlet');
 const chalk = require('chalk');
 
 // Linking Equations
-const { allEmployees, allRoles, allDepartments, EmployeeDepartments, departmentBudgets} = require('./observe/viewall.js');
-const { updateEmployeeRolePrompt, updateEmployeeManagerPrompt } = require('./amend/updateall.js');
+const { allEmployees, allRoles, allDepartments, EmployeeDepartments, departmentBudgets} = require('./view/views.js');
+const { updateEmployeeRolePrompt, updateEmployeeManagerPrompt } = require('./update/updates.js');
+const { upEmployee, upRole, upDepartment } = require('./add/adds.js');
+const { minusEmployee, minusRole, minusDepartment, } = require('./delete/deletes.js');
 
 // DB Connection and opening title
 connection.connect((error) => {
@@ -100,31 +102,31 @@ const promptUser = () => {
 // View All Employees
 const viewEmployees = () => {
     allEmployees();
-    setTimeout(promptUser, 300);
+    setTimeout(promptUser, 1000);
 };
 
 // View All Roles
 const viewRoles = () => {
     allRoles();
-    setTimeout(promptUser, 300);
+    setTimeout(promptUser, 1000);
 };
 
 // View All Departments
 const viewDepartments = () => {
     allDepartments();
-    setTimeout(promptUser, 300);
+    setTimeout(promptUser, 1000);
 };
 
 // View All Employees by Department
 const viewEmployeesByDepartment = () => {
     EmployeeDepartments();
-    setTimeout(promptUser, 300);
+    setTimeout(promptUser, 1000);
 };
 
 // View Department Budgets
 const viewDepartmentBudget = () => {
     departmentBudgets();
-    setTimeout(promptUser, 300);
+    setTimeout(promptUser, 1000);
 };
 
 // Update Employee Role
@@ -141,102 +143,36 @@ const updateEmployeeManager = () => {
 
 // Add Employee
 const addEmployee = () => {
-    const sql = ``;
-
-    connection.query(sql, (error, res) => {
-        if (error) throw new Error;
-
-        console.log(chalk.cyan.bold(`====================================================================================`));
-        console.log(``);
-        console.log(chalk.magentaBright.bold(figlet.textSync(``)));
-        console.log(``);
-        console.table(res);
-        console.log(chalk.cyan.bold(`====================================================================================`));
-        promptUser();
-    });
+    upEmployee();
+    setTimeout(promptUser, 20000);
 };
 
 // Add Role
 const addRole = () => {
-    const sql = ``;
-
-    connection.query(sql, (error, res) => {
-        if (error) throw new Error;
-
-        console.log(chalk.cyan.bold(`====================================================================================`));
-        console.log(``);
-        console.log(chalk.magentaBright.bold(figlet.textSync(``)));
-        console.log(``);
-        console.table(res);
-        console.log(chalk.cyan.bold(`====================================================================================`));
-        promptUser();
-    });
+    upRole();
+    setTimeout(promptUser, 20000);
 };
 
 // Add Department
 const addDepartment = () => {
-    const sql = ``;
-
-    connection.query(sql, (error, res) => {
-        if (error) throw new Error;
-
-        console.log(chalk.cyan.bold(`====================================================================================`));
-        console.log(``);
-        console.log(chalk.magentaBright.bold(figlet.textSync(``)));
-        console.log(``);
-        console.table(res);
-        console.log(chalk.cyan.bold(`====================================================================================`));
-        promptUser();
-    });
+    upDepartment();
+    setTimeout(promptUser, 20000);
 };
 
 // Remove Employee
 const removeEmployee = () => {
-    const sql = ``;
-
-    connection.query(sql, (error, res) => {
-        if (error) throw new Error;
-
-        console.log(chalk.cyan.bold(`====================================================================================`));
-        console.log(``);
-        console.log(chalk.magentaBright.bold(figlet.textSync(``)));
-        console.log(``);
-        console.table(res);
-        console.log(chalk.cyan.bold(`====================================================================================`));
-        promptUser();
-    });
+    minusEmployee();
+    setTimeout(promptUser, 20000);
 };
 
 // Remove Role
 const removeRole = () => {
-    const sql = ``;
-
-    connection.query(sql, (error, res) => {
-        if (error) throw new Error;
-
-        console.log(chalk.cyan.bold(`====================================================================================`));
-        console.log(``);
-        console.log(chalk.magentaBright.bold(figlet.textSync(``)));
-        console.log(``);
-        console.table(res);
-        console.log(chalk.cyan.bold(`====================================================================================`));
-        promptUser();
-    });
+    minusRole();
+    setTimeout(promptUser, 20000);
 };
 
 // Remove Department
 const removeDepartment = () => {
-    const sql = ``;
-
-    connection.query(sql, (error, res) => {
-        if (error) throw new Error;
-
-        console.log(chalk.cyan.bold(`====================================================================================`));
-        console.log(``);
-        console.log(chalk.magentaBright.bold(figlet.textSync(``)));
-        console.log(``);
-        console.table(res);
-        console.log(chalk.cyan.bold(`====================================================================================`));
-        promptUser();
-    });
+    minusDepartment();
+    setTimeout(promptUser, 20000);
 };
